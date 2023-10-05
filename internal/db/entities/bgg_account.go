@@ -33,3 +33,13 @@ func Upsert_into_bgg_account(db *sql.DB, userId int64, bggAccount string) (*BggA
 	}
 	return Get_bgg_account(db, userId)
 }
+
+func DeleteFromBggAccount(db *sql.DB, userId int64) error {
+	query := `
+	DELETE FROM bgg_accounts
+	WHERE user_id = $1;
+`
+	_, err := db.Exec(query, userId)
+
+	return err
+}

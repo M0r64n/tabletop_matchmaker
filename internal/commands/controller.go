@@ -9,6 +9,7 @@ import (
 	"tabletop_matchmaker/internal/commands/getcollection"
 	"tabletop_matchmaker/internal/commands/help"
 	"tabletop_matchmaker/internal/commands/link"
+	"tabletop_matchmaker/internal/commands/unlink"
 	errors2 "tabletop_matchmaker/internal/helpers/errors"
 	"tabletop_matchmaker/internal/types"
 
@@ -95,6 +96,8 @@ func (c Controller) getPrivateCommandHandler(command string) (Command, error) {
 		return help.Help{}, nil
 	case link.Name():
 		return link.Link{}, nil
+	case unlink.Name():
+		return unlink.Unlink{}, nil
 	case getcollection.Name():
 		return getcollection.GetCollection{}, nil
 	}
